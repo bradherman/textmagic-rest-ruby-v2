@@ -16,6 +16,7 @@ require 'logger'
 require 'tempfile'
 require 'typhoeus'
 require 'uri'
+require 'cgi'
 
 module TextMagic
   class ApiClient
@@ -264,7 +265,7 @@ module TextMagic
     def build_request_url(path)
       # Add leading and trailing slashes to path
       path = "/#{path}".gsub(/\/+/, '/')
-      URI.escape(@config.base_url + path)
+      CGI.escape(@config.base_url + path)
     end
 
     # Builds the HTTP request body
