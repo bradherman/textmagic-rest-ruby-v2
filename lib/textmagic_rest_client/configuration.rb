@@ -11,6 +11,7 @@ Swagger Codegen version: 2.4.8
 =end
 
 require 'uri'
+require 'cgi'
 
 module TextMagic
   class Configuration
@@ -175,7 +176,7 @@ module TextMagic
 
     def base_url
       url = "#{scheme}://#{[host, base_path].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
-      URI.escape(url)
+      CGI.escape(url)
     end
 
     # Gets API key (with prefix if set).
